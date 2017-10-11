@@ -20,7 +20,7 @@ composer require chrisharrison/php-array-of
 
 PHP 7 has pretty good support for type declarations, both in arguments and returns. It now also handles primitives as well as class names. For example:
 
-```
+```php
 public function dealCard(string $cardName): Card;
 ```
 
@@ -41,29 +41,27 @@ The library comes with `ArrayOf` implementations for all of the PHP scalar types
 
 These can then be used in a type declaration:
 
-```
+```php
 public function getIntegers() : ArrayOfInteger;
 ```
 
 An `ArrayOfInteger` can be created:
 
-```
+```php
 $integers = ArrayOfInteger([1,1,2,3,5,8,13]);
 ```
 
 and used like an array:
 
-```
-$sum = $integers[5] + $integers[6]; // 21
+```php
+$sum = $integers[5] + $integers[6]; // equals 21
 ```
 
 ### Implementing your own type ###
 
 You can create your own `ArrayOf`s for your own types.
 
-```
-use ChrisHarrison\ArrayOf\ArrayOf;
-
+```php
 final class ArrayOfCard extends ArrayOf
 {
     protected function typeToEnforce(): string
@@ -75,9 +73,27 @@ final class ArrayOfCard extends ArrayOf
 
 An `ArrayOfCard` can be created thus:
 
-```
+```php
 $aceOfSpades = new Card('spades', 'ace');
 $threeOfClubs = new Card('clubs', '3');
 
 $cards = ArrayOfCard([$aceOfSpades, $threeOfClubs]);
 ```
+
+## Other concerns ##
+
+### Immutability ###
+
+`ArrayOf`s are immutable. The input arrray is passed into the construcutor on instantiation. No further changes can be made to the object. If you try to perform a write operation (e.g. `unset`) on it, an exception will be thrown.
+
+### Arrays ###
+
+PHP has a strange conception of arrays. `ArrayOf` abstracts all that weirdness. On instaniation, keys are stripped and you get a nice zero-indexed, single dimensional array.
+
+### Enforcement ###
+
+Members of an `ArrayOf` are enforced as being of the type specified in the `typeToEnforce` abstract method. This enforcement occurs on instaniation at runtime. If you try to instantiate with a member of a non-matching type, an exception will be thrown.
+
+### Permissable types ###
+
+Only PHP [scalars](http://php.net/manual/en/function.is-scalar.php) and objects can be members of an `ArrayOf`. So no `callable`s and no `array`s. 
