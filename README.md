@@ -42,13 +42,13 @@ The library comes with `ArrayOf` implementations for all of the PHP scalar types
 These can then be used in a type declaration:
 
 ```
-public function getIntegers() : ArrayOfIntegers;
+public function getIntegers() : ArrayOfInteger;
 ```
 
-An `ArrayOfIntegers` can be created:
+An `ArrayOfInteger` can be created:
 
 ```
-$integers = ArrayOfIntegers([1,1,2,3,5,8,13]);
+$integers = ArrayOfInteger([1,1,2,3,5,8,13]);
 ```
 
 and used like an array:
