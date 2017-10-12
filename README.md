@@ -84,16 +84,12 @@ $cards = ArrayOfCard([$aceOfSpades, $threeOfClubs]);
 
 ### Immutability ###
 
-`ArrayOf`s are immutable. The input arrray is passed into the construcutor on instantiation. No further changes can be made to the object. If you try to perform a write operation (e.g. `unset`) on it, an exception will be thrown.
-
-### Arrays ###
-
-PHP has a strange conception of arrays. `ArrayOf` abstracts all that weirdness. On instaniation, keys are stripped and you get a nice zero-indexed, single dimensional array.
+`ArrayOf`s are immutable. The input array is passed into the constructor on instantiation. No further changes can be made to the object. If you try to perform a write operation (e.g. `unset`) on it, an exception will be thrown.
 
 ### Enforcement ###
 
-Members of an `ArrayOf` are enforced as being of the type specified in the `typeToEnforce` abstract method. This enforcement occurs on instaniation at runtime. If you try to instantiate with a member of a non-matching type, an exception will be thrown.
+Members of an `ArrayOf` are enforced as being of the type specified in the `typeToEnforce` abstract method. This enforcement occurs on instantiation at runtime. If you try to instantiate with a member of a non-matching type, an exception will be thrown.
 
-### Permissable types ###
+### Permissible types ###
 
 Only PHP [scalars](http://php.net/manual/en/function.is-scalar.php) and objects can be members of an `ArrayOf`. So no `callable`s and no `array`s. 
