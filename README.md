@@ -82,10 +82,6 @@ $cards = ArrayOfCard([$aceOfSpades, $threeOfClubs]);
 
 ## Other concerns ##
 
-### Immutability ###
-
-`ArrayOf`s are immutable. The input array is passed into the constructor on instantiation. No further changes can be made to the object. If you try to perform a write operation (e.g. `unset`) on it, an exception will be thrown.
-
 ### Enforcement ###
 
 Members of an `ArrayOf` are enforced as being of the type specified in the `typeToEnforce` abstract method. This enforcement occurs on instantiation at runtime. If you try to instantiate with a member of a non-matching type, an exception will be thrown.
@@ -93,3 +89,12 @@ Members of an `ArrayOf` are enforced as being of the type specified in the `type
 ### Permissible types ###
 
 Only PHP [scalars](http://php.net/manual/en/function.is-scalar.php) and objects can be members of an `ArrayOf`. So no `callable`s and no `array`s. 
+
+### Immutability ###
+
+`ArrayOf`s are mutable. This library provides the capability to define immutable objects in the form of `ImmutableArrayOf`s. These objects extend from `ArrayOf` and work in the same way except after the initial instantiation, no further changes can be made to the object. If you try to perform a write operation (e.g. `unset`) on it, an exception will be thrown. All of the scalar types are also provided in immutable form:
+
+* `ImmutableArrayOfInteger`
+* `ImmutableArrayOfFloat`
+* `ImmutableArrayOfString`
+* `ImmutableArrayOfBoolean`
