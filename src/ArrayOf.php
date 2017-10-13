@@ -2,7 +2,6 @@
 
 namespace ChrisHarrison\ArrayOf;
 
-use ChrisHarrison\ArrayOf\Exceptions\ImmutabilityException;
 use ChrisHarrison\ArrayOf\Exceptions\InvalidEnforcementType;
 use ChrisHarrison\ArrayOf\Exceptions\InvalidInstantiationType;
 
@@ -54,15 +53,5 @@ abstract class ArrayOf extends \ArrayObject
         }
 
         return gettype($variable);
-    }
-
-    public function offsetSet($offset, $value)
-    {
-        throw new ImmutabilityException();
-    }
-
-    public function offsetUnset($offset)
-    {
-        throw new ImmutabilityException();
     }
 }

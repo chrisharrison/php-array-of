@@ -1,6 +1,6 @@
 <?php
 
-namespace ChrisHarrison\ArrayOf;
+namespace ChrisHarrison\ArrayOf\Scalars\Mutable;
 
 use PHPUnit\Framework\TestCase;
 

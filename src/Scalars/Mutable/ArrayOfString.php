@@ -1,6 +1,8 @@
 <?php
 
-namespace ChrisHarrison\ArrayOf;
+namespace ChrisHarrison\ArrayOf\Scalars\Mutable;
+
+use ChrisHarrison\ArrayOf\ArrayOf;
 
 final class ArrayOfString extends ArrayOf
 {

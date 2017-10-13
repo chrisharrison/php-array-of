@@ -2,7 +2,6 @@
 
 namespace ChrisHarrison\ArrayOf;
 
-use ChrisHarrison\ArrayOf\Exceptions\ImmutabilityException;
 use ChrisHarrison\ArrayOf\Exceptions\InvalidEnforcementType;
 use ChrisHarrison\ArrayOf\Exceptions\InvalidInstantiationType;
 use ChrisHarrison\ArrayOf\TestClasses\InvalidClassArrayOf;
@@ -70,19 +69,5 @@ final class ArrayOfTest extends TestCase
             $i++;
         }
         $this->assertEquals(2, $i);
-    }
-
-    public function testImmutabilityOfSet()
-    {
-        $test = new ValidScalarArrayOf(['test']);
-        $this->expectException(ImmutabilityException::class);
-        $test[] = 'invalid';
-    }
-
-    public function testImmutabilityOfUnset()
-    {
-        $test = new ValidScalarArrayOf(['test']);
-        $this->expectException(ImmutabilityException::class);
-        unset($test[0]);
     }
 }
