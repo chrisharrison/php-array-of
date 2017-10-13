@@ -3,6 +3,7 @@
 namespace ChrisHarrison\ArrayOf\Scalars\Mutable;
 
 use PHPUnit\Framework\TestCase;
+use ChrisHarrison\ArrayOf\ArrayOf;
 
 final class ArrayOfBooleanTest extends TestCase
 {

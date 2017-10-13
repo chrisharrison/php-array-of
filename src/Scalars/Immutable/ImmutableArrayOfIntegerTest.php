@@ -3,6 +3,7 @@
 namespace ChrisHarrison\ArrayOf\Scalars\Immutable;
 
 use PHPUnit\Framework\TestCase;
+use ChrisHarrison\ArrayOf\ImmutableArrayOf;
 
 final class ImmutableArrayOfIntegerTest extends TestCase
 {

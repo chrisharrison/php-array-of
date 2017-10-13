@@ -3,6 +3,7 @@
 namespace ChrisHarrison\ArrayOf\Scalars\Mutable;
 
 use PHPUnit\Framework\TestCase;
+use ChrisHarrison\ArrayOf\ArrayOf;
 
 final class ArrayOfIntegerTest extends TestCase
 {

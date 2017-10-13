@@ -3,6 +3,7 @@
 namespace ChrisHarrison\ArrayOf;
 
 use ChrisHarrison\ArrayOf\Exceptions\ImmutabilityException;
+use ChrisHarrison\ArrayOf\TestClasses\ValidScalarImmutableArrayOf;
 use PHPUnit\Framework\TestCase;
 
 final class ImmutableArrayOfTest extends TestCase
