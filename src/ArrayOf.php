@@ -37,7 +37,7 @@ abstract class ArrayOf extends \ArrayObject
     private function checkEnforcementType() : bool
     {
         //Check for valid class
-        if (class_exists($this->typeToEnforce())) {
+        if (class_exists($this->typeToEnforce()) || interface_exists($this->typeToEnforce())) {
             return true;
         }
 
