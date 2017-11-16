@@ -9,20 +9,30 @@ abstract class ArrayOf extends \ArrayObject
 {
     abstract protected function typeToEnforce() : string;
 
-    public function __construct(array $input = [])
+    public function __construct(array $input = [], ?callable $filter = null)
     {
         //Check that the type to enforce is valid
         if (!$this->checkEnforcementType()) {
             throw new InvalidEnforcementType($this->typeToEnforce());
         }
 
-        //Enforce type of array items.
+        $filteredInput = [];
         foreach ($input as $item) {
+
+            //Enforce type of array items.
             if (!$this->checkType($item)) {
                 throw new InvalidInstantiationType(static::class, self::getType($item), $this->typeToEnforce());
             }
+
+            //Allow input to be filtered by callback
+            if ($filter !== null && $filter($item) == false) {
+                continue;
+            }
+
+            $filteredInput[] = $item;
         }
-        parent::__construct($input);
+
+        parent::__construct($filteredInput);
     }
 
     private function checkType($variable) : bool

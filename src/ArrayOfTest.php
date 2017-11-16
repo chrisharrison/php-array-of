@@ -70,4 +70,23 @@ final class ArrayOfTest extends TestCase
         }
         $this->assertEquals(2, $i);
     }
+
+    public function testFiltersInputBasedOnCallback()
+    {
+        $filterCallback = function (SimpleTestObject $item) {
+            return ($item->getValue() === 'yes');
+        };
+
+        $test = new ValidClassArrayOf([
+            new SimpleTestObject('yes'),
+            new SimpleTestObject('no'),
+            new SimpleTestObject('yes'),
+            new SimpleTestObject('yes'),
+            new SimpleTestObject('no'),
+            new SimpleTestObject('yes'),
+            new SimpleTestObject('yes')
+        ], $filterCallback);
+
+        $this->assertEquals(5, count($test));
+    }
 }
