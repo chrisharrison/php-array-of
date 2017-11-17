@@ -17,7 +17,7 @@ abstract class ArrayOf extends \ArrayObject
         }
 
         $filteredInput = [];
-        foreach ($input as $item) {
+        foreach ($input as $key => $item) {
             //Enforce type of array items.
             if (!$this->checkType($item)) {
                 throw new InvalidInstantiationType(static::class, self::getType($item), $this->typeToEnforce());
@@ -28,7 +28,7 @@ abstract class ArrayOf extends \ArrayObject
                 continue;
             }
 
-            $filteredInput[] = $item;
+            $filteredInput[$key] = $item;
         }
 
         parent::__construct($filteredInput);

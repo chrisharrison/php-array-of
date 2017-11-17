@@ -22,6 +22,20 @@ final class ArrayOfTest extends TestCase
         $this->assertInstanceOf(ArrayOf::class, $validClass);
     }
 
+    public function testKeysArePreserved()
+    {
+        $input = [
+            'key1' => 'value1',
+            'key2' => 'value2'
+        ];
+
+        $test = (array) new ValidScalarArrayOf($input);
+
+        $this->assertEquals('key1', key($test));
+        next($test);
+        $this->assertEquals('key2', key($test));
+    }
+
     public function testInvalidScalarEnforcementType()
     {
         $this->expectException(InvalidEnforcementType::class);
