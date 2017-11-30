@@ -9,6 +9,7 @@
     }
   ],
   "require": {
+    "php": "^7.1",
     "squizlabs/php_codesniffer": "^3.1"
   },
   "require-dev": {
