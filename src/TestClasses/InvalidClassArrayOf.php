@@ -10,6 +10,6 @@ final class InvalidClassArrayOf extends ArrayOf
 {
     protected function typeToEnforce() : string
     {
-        return 'CompletelyInvalidClassName' . md5(time());
+        return 'CompletelyInvalidClassName' . md5((string) time());
     }
 }
