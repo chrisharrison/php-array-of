@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChrisHarrison\ArrayOf\Exceptions;
 
 final class InvalidEnforcementType extends \Exception

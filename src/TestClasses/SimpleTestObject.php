@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChrisHarrison\ArrayOf\TestClasses;
 
 final class SimpleTestObject

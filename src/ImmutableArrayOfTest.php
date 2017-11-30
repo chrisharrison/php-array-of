@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChrisHarrison\ArrayOf;
 
 use ChrisHarrison\ArrayOf\Exceptions\ImmutabilityException;
