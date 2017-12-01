@@ -2,6 +2,7 @@
   "name": "chrisharrison/php-array-of",
   "description": "Implement an array of a defined type. Generics replacement for PHP.",
   "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "Chris Harrison",
