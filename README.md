@@ -6,7 +6,7 @@ Implement an array of a defined type. Generics replacement for PHP.
 
 ## Requirements ##
 
-Requires PHP 7.1
+Requires PHP >= 7.1
 
 ## Installation ##
 
