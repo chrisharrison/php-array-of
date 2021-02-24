@@ -42,13 +42,13 @@ The library comes with `ArrayOf` implementations for all of the PHP scalar types
 These can then be used in a type declaration:
 
 ```php
-public function getIntegers() : ArrayOfInteger;
+public function getIntegers(): ArrayOfInteger;
 ```
 
 An `ArrayOfInteger` can be created:
 
 ```php
-$integers = ArrayOfInteger([1,1,2,3,5,8,13]);
+$integers = new ArrayOfInteger([1,1,2,3,5,8,13]);
 ```
 
 and used like an array:
@@ -77,7 +77,7 @@ An `ArrayOfCard` can be created thus:
 $aceOfSpades = new Card('spades', 'ace');
 $threeOfClubs = new Card('clubs', '3');
 
-$cards = ArrayOfCard([$aceOfSpades, $threeOfClubs]);
+$cards = new ArrayOfCard([$aceOfSpades, $threeOfClubs]);
 ```
 
 ## Other concerns ##
