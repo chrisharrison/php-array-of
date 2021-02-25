@@ -2,29 +2,30 @@
 
 declare(strict_types=1);
 
-namespace ChrisHarrison\ArrayOf;
+namespace ChrisHarrison\ArrayOfTest\Unit;
 
+use ChrisHarrison\ArrayOf\ArrayOf;
 use ChrisHarrison\ArrayOf\Exceptions\InvalidEnforcementType;
 use ChrisHarrison\ArrayOf\Exceptions\InvalidInstantiationType;
-use ChrisHarrison\ArrayOf\TestClasses\InvalidClassArrayOf;
-use ChrisHarrison\ArrayOf\TestClasses\InvalidScalarArrayOf;
-use ChrisHarrison\ArrayOf\TestClasses\SimpleTestObject;
-use ChrisHarrison\ArrayOf\TestClasses\ValidClassArrayOf;
-use ChrisHarrison\ArrayOf\TestClasses\ValidScalarArrayOf;
+use ChrisHarrison\ArrayOfTest\Unit\TestClasses\InvalidClassArrayOf;
+use ChrisHarrison\ArrayOfTest\Unit\TestClasses\InvalidScalarArrayOf;
+use ChrisHarrison\ArrayOfTest\Unit\TestClasses\SimpleTestObject;
+use ChrisHarrison\ArrayOfTest\Unit\TestClasses\ValidClassArrayOf;
+use ChrisHarrison\ArrayOfTest\Unit\TestClasses\ValidScalarArrayOf;
 use PHPUnit\Framework\TestCase;
 
 final class ArrayOfTest extends TestCase
 {
-    public function testValidEnforcementTypes()
+    public function testValidEnforcementTypes(): void
     {
         $validScalar = new ValidScalarArrayOf([]);
-        $this->assertInstanceOf(ArrayOf::class, $validScalar);
+        self::assertInstanceOf(ArrayOf::class, $validScalar);
 
         $validClass = new ValidClassArrayOf([]);
-        $this->assertInstanceOf(ArrayOf::class, $validClass);
+        self::assertInstanceOf(ArrayOf::class, $validClass);
     }
 
-    public function testKeysArePreserved()
+    public function testKeysArePreserved(): void
     {
         $input = [
             'key1' => 'value1',
@@ -33,61 +34,61 @@ final class ArrayOfTest extends TestCase
 
         $test = (array) new ValidScalarArrayOf($input);
 
-        $this->assertEquals('key1', key($test));
+        self::assertEquals('key1', key($test));
         next($test);
-        $this->assertEquals('key2', key($test));
+        self::assertEquals('key2', key($test));
     }
 
-    public function testInvalidScalarEnforcementType()
+    public function testInvalidScalarEnforcementType(): void
     {
         $this->expectException(InvalidEnforcementType::class);
         new InvalidScalarArrayOf([]);
     }
 
-    public function testInvalidClassEnforcementType()
+    public function testInvalidClassEnforcementType(): void
     {
         $this->expectException(InvalidEnforcementType::class);
         new InvalidClassArrayOf([]);
     }
 
-    public function testValidInputTypes()
+    public function testValidInputTypes(): void
     {
         $scalars = new ValidScalarArrayOf(['test', 'test-again']);
-        $this->assertInstanceOf(ArrayOf::class, $scalars);
+        self::assertInstanceOf(ArrayOf::class, $scalars);
 
         $classes = new ValidClassArrayOf([new SimpleTestObject, new SimpleTestObject]);
-        $this->assertInstanceOf(ArrayOf::class, $classes);
+        self::assertInstanceOf(ArrayOf::class, $classes);
     }
 
-    public function testInvalidScalarInputType()
+    public function testInvalidScalarInputType(): void
     {
         $this->expectException(InvalidInstantiationType::class);
         new ValidScalarArrayOf([1]);
     }
 
-    public function testInvalidClassInputType()
+    public function testInvalidClassInputType(): void
     {
         $this->expectException(InvalidInstantiationType::class);
         new ValidClassArrayOf([new \stdClass]);
     }
 
-    public function testCanUseAsArray()
+    public function testCanUseAsArray(): void
     {
         $test = new ValidScalarArrayOf(['test1', 'test2']);
 
-        $this->assertEquals('test1', $test[0]);
-        $this->assertEquals('test2', $test[1]);
-        $this->assertTrue(isset($test[0]));
-        $this->assertFalse(isset($test[100]));
+        self::assertEquals('test1', $test[0]);
+        self::assertEquals('test2', $test[1]);
+        self::assertTrue(isset($test[0]));
+        self::assertFalse(isset($test[100]));
 
         $i = 0;
         foreach ($test as $item) {
             $i++;
         }
-        $this->assertEquals(2, $i);
+        self::assertEquals(2, $i);
     }
 
-    public function testFiltersInputBasedOnCallback()
+    public function testFiltersInputBasedOnCallback(): void
     {
         $filterCallback = function (SimpleTestObject $item) {
             return ($item->getValue() === 'yes');
@@ -103,6 +104,6 @@ final class ArrayOfTest extends TestCase
             new SimpleTestObject('yes')
         ], $filterCallback);
 
-        $this->assertEquals(5, count($test));
+        self::assertEquals(5, count($test));
     }
 }

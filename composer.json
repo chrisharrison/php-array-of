@@ -20,5 +20,12 @@
     "psr-4": {
       "ChrisHarrison\\ArrayOf\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ChrisHarrison\\ArrayOfTest\\": "tests"
+    }
+  },"scripts": {
+    "test": "vendor/bin/phpunit"
   }
 }

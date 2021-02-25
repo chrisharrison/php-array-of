@@ -11,6 +11,9 @@ abstract class ArrayOf extends \ArrayObject
 {
     abstract protected function typeToEnforce() : string;
 
+    /**
+     * @throws InvalidInstantiationType
+     */
     public function __construct(array $input = [], ?callable $filter = null)
     {
         //Check that the type to enforce is valid

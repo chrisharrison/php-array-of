@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChrisHarrison\ArrayOf\TestClasses;
+namespace ChrisHarrison\ArrayOfTest\Unit\TestClasses;
 
 use ChrisHarrison\ArrayOf\ArrayOf;
 
